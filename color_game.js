@@ -1,14 +1,15 @@
-var colors = [
-  "rgb(255, 0, 0)",
-  "rgb(255, 0, 255)",
-  "rgb(255, 255, 0)",
-  "rgb(0, 0, 255)",
-  "rgb(0, 255, 0)",
-  "rgb(0, 225, 255)"
-]
+// var colors = [
+//   "rgb(255, 0, 0)",
+//   "rgb(255, 0, 255)",
+//   "rgb(255, 255, 0)",
+//   "rgb(0, 0, 255)",
+//   "rgb(0, 255, 0)",
+//   "rgb(0, 225, 255)"
+// ]
+var colors = makeRandomColors(6);
 
 var squares = document.querySelectorAll(".square");
-var right_color = randColors();
+var right_color = pickRandColor();
 var color_disp = document.getElementById("colorDisp");
 color_disp.textContent = right_color;
 var message = document.getElementById("message");
@@ -31,6 +32,7 @@ for(var i = 0; i < colors.length; i++){
   });
 }
 
+//assigns a color to each square
 function changeColors(color){
   message.textContent = "Correct!";
   squares.forEach(function(item){
@@ -39,7 +41,31 @@ function changeColors(color){
   h1.style.backgroundColor = picked_color;
 }
 
-function randColors(){
+//picks random color as correct color
+function pickRandColor(){
   var random = Math.floor(Math.random()*colors.length);
   return colors[random];
+}
+
+//generates random colors array with n elements
+function makeRandomColors(n){
+  var arr = [];
+
+  for(var i = 0; i < n; i++){
+    arr.push(getRandomRGB());
+  }
+
+  return arr;
+}
+
+//generates random color to populate array
+function getRandomRGB(){
+  //random red
+  var r = Math.floor(Math.random()*256);
+  //random green
+  var g = Math.floor(Math.random()*256);
+  //random blue
+  var b = Math.floor(Math.random()*256);
+
+  return "rgb(" + r + ", " + g + ", " + b + ")";
 }
