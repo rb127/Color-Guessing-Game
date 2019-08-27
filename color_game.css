@@ -5,7 +5,8 @@ body{
 h1{
   color: white;
   /* margin: 0 auto; */
-  font-size: 50px;
+  /* font-size: 50px; */
+  text-align: center;
 }
 
 .square{
@@ -15,12 +16,23 @@ h1{
   padding-bottom: 30%;
   float: left;
 }
-span{
+/* span{
   color: white;
-}
+} */
 
 .container{
   max-width: 600px;
   /* align-content: center; */
   margin: 0 auto;
+}
+
+#bar{
+  background-color: white;
+  height: 30px;
+  text-align: center;
+}
+
+#reset{
+  height: 25px;
+  background-color: white;
 }
