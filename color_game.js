@@ -1,11 +1,4 @@
-// var colors = [
-//   "rgb(255, 0, 0)",
-//   "rgb(255, 0, 255)",
-//   "rgb(255, 255, 0)",
-//   "rgb(0, 0, 255)",
-//   "rgb(0, 255, 0)",
-//   "rgb(0, 225, 255)"
-// ]
+
 var colors = makeRandomColors(6);
 
 var squares = document.querySelectorAll(".square");
@@ -14,9 +7,26 @@ var color_disp = document.getElementById("colorDisp");
 color_disp.textContent = right_color;
 var message = document.getElementById("message");
 var h1 = document.querySelector("h1");
+var reset = document.getElementById("reset");
 
+//start game for first time
+newGame();
+
+//New Game button
+reset.addEventListener("click", function(){
+      colors = makeRandomColors(6);
+      right_color = pickRandColor();
+      color_disp.textContent = right_color;
+      h1.style.backgroundColor = "#232323";
+      message.textContent = "";
+      newGame();
+
+});
+
+//initializes new game
+function newGame(){
 for(var i = 0; i < colors.length; i++){
-  //initialising sqaures with colors
+  //initialising squares with colors
   squares[i].style.backgroundColor = colors[i];
 
   //adding event listeners to squares
@@ -31,6 +41,7 @@ for(var i = 0; i < colors.length; i++){
     }
   });
 }
+}
 
 //assigns a color to each square
 function changeColors(color){
@@ -38,7 +49,7 @@ function changeColors(color){
   squares.forEach(function(item){
     item.style.backgroundColor = color;
   });
-  h1.style.backgroundColor = picked_color;
+  h1.style.backgroundColor = color;
 }
 
 //picks random color as correct color
