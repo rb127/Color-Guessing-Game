@@ -1,0 +1,21 @@
+body{
+  background-color: #232323
+}
+
+h1{
+  color: white;
+}
+
+.square{
+  width: 30%;
+  background: gold;
+  margin: 1.66%;
+  padding-bottom: 30%;
+  float: left;
+}
+
+.container{
+  max-width: 600px;
+  /* align-content: center; */
+  margin: 0 auto;
+}
