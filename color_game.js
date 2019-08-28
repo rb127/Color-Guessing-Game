@@ -21,7 +21,7 @@ colors = makeRandomColors(numOfSquares);
 right_color = pickRandColor();
 color_disp.textContent = right_color;
 reset.textContent = "New Colors";
-h1.style.backgroundColor = "#232323";
+//h1.style.backgroundColor = "#232323";
 message.textContent = "";
 for(var i = 0; i < squares.length; i++){
   if(i < 3){
@@ -43,7 +43,7 @@ hard.addEventListener("click", function(){
   right_color = pickRandColor();
   reset.textContent = "New Colors";
   color_disp.textContent = right_color;
-  h1.style.backgroundColor = "#232323";
+//  h1.style.backgroundColor = "#232323";
   message.textContent = "";
   for(var i = 0; i < colors.length; i++){
   squares[i].style.backgroundColor = colors[i];
@@ -59,7 +59,7 @@ reset.addEventListener("click", function(){
       right_color = pickRandColor();
       reset.textContent = "New Colors";
       color_disp.textContent = right_color;
-      h1.style.backgroundColor = "#232323";
+     h1.style.backgroundColor = "steelblue"; //"#232323";
       message.textContent = "";
       for(var i = 0; i < colors.length; i++){
       squares[i].style.backgroundColor = colors[i];
