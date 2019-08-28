@@ -33,6 +33,10 @@ h1{
 }
 
 #reset{
-  height: 25px;
+  /* height: 25px; */
   background-color: white;
+}
+
+.selected{
+  background-color: blue;
 }
