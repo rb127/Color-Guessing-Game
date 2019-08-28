@@ -1,8 +1,8 @@
-
   var numOfSquares = 6;
-  var colors = makeRandomColors(numOfSquares);
+  var colors = [];//makeRandomColors(numOfSquares);
+  var right_color; //= pickRandColor();
+
   var squares = document.querySelectorAll(".square");
-  var right_color = pickRandColor();
   var color_disp = document.getElementById("colorDisp");
   color_disp.textContent = right_color;
   var message = document.getElementById("message");
@@ -10,22 +10,20 @@
   var reset = document.getElementById("reset");
   var mode = document.querySelectorAll(".mode");
 
-//handling different modes
-  for(var i = 0; i < mode.length; i++){
-    mode[i].addEventListener("click", function(){
-      mode[0].classList.remove("selected");
-      mode[1].classList.remove("selected");
-      this.classList.add("selected");
-      this.textContent === "Easy"? numOfSquares = 3 : numOfSquares = 6;
-      resetGame();
-    });
-  }
-  
+initGame();
+//initialises game
+function initGame(){
+  setUpModeListeners();
+  setUpCircleListeners();
+  resetGame();
+}
+
   //New Game button
   reset.addEventListener("click", function(){
         resetGame();
   });
 
+  //resets game
   function resetGame(){
     colors = makeRandomColors(numOfSquares);
     right_color = pickRandColor();
@@ -44,25 +42,36 @@
     }
   }
 
-  //initializes new game
-  for(var i = 0; i < colors.length; i++){
-    //initialising squares with colors
-    squares[i].style.backgroundColor = colors[i];
-
-    //adding event listeners to squares
-    squares[i].addEventListener("click", function(){
-      var picked_color = this.style.backgroundColor;
-      if(picked_color === right_color){
-        changeColors(picked_color);
-        reset.textContent = "Play Again?";
+  function setUpModeListeners(){
+    //handling different modes
+      for(var i = 0; i < mode.length; i++){
+        mode[i].addEventListener("click", function(){
+          mode[0].classList.remove("selected");
+          mode[1].classList.remove("selected");
+          this.classList.add("selected");
+          this.textContent === "Easy"? numOfSquares = 3 : numOfSquares = 6;
+          resetGame();
+        });
       }
-      else{
-        message.textContent = "Try Again";
-        this.style.backgroundColor = "#232323";
-      }
-    });
   }
 
+//sets up circle listeners
+function setUpCircleListeners(){
+for(var i = 0; i < squares.length; i++){
+  //adding event listeners to squares
+  squares[i].addEventListener("click", function(){
+    var picked_color = this.style.backgroundColor;
+    if(picked_color === right_color){
+      changeColors(picked_color);
+      reset.textContent = "Play Again?";
+    }
+    else{
+      message.textContent = "Try Again";
+      this.style.backgroundColor = "#232323";
+    }
+  });
+}
+}
 
   //assigns a color to each square
   function changeColors(color){
