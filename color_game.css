@@ -57,6 +57,7 @@ button{
   /* for web browsers */
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
+  outline: none;
 }
 
 .container{
